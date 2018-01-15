@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="192.168.1.103">
+    <serverData>
+      <paths name="192.168.1.103">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/RemoteHost/192.168.1.103" web="/" />
+            <mapping local="$PROJECT_DIR$/weix-api" />
+            <mapping local="$PROJECT_DIR$/weixservice" />
+            <mapping local="$PROJECT_DIR$/weixcommons" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

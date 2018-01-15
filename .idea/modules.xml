@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/weix.iml" filepath="$PROJECT_DIR$/weix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weix-api/weix-api.iml" filepath="$PROJECT_DIR$/weix-api/weix-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weixcommons/weixcommons.iml" filepath="$PROJECT_DIR$/weixcommons/weixcommons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weixservice/weixservice.iml" filepath="$PROJECT_DIR$/weixservice/weixservice.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ 参考：
+http://www.jianshu.com/p/09f55766088d
+http://www.cnblogs.com/loveyou/articles/5751548.html
+ -->
+<configuration>
+    <!-- 上下文名称 -->
+    <contextName>logback</contextName>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <!--  输出到控制台 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <!--  输出到文件 -->
+    <appender name="infoFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+        <!-- 正在记录的日志的路径及位置 -->
+        <file>${LOG_PATH}/info.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/info-%d{yyyyMMdd}.log</fileNamePattern>
+            <!-- 日志文件数量限制(maxHistory 优先于 totalSizeCap使用，也就是:一旦日志文件数 > maxHistory那么就会删除旧的日志文件)  -->
+            <maxHistory>365</maxHistory>
+            <!-- 日志文件总大小限制(只要日志文件的总大小) > totalCap 那么就会删除旧得文件 -->
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!--  输出到文件 -->
+    <appender name="errorFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+        <!-- 正在记录的日志的路径及位置 -->
+        <file>${LOG_PATH}/error.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- %i : 如果当天的日志文件大小穿过maxFileSize，则会生成一个yyyyMMdd.1.log存储日志内容，以此类推可能会产生 yyyMMdd2.log yyyyMMdd.3.log -->
+            <fileNamePattern>${LOG_PATH}/error-%d{yyyyMMdd}.%i.log</fileNamePattern>
+            <!-- 单个日志文件最大容量 -->
+            <maxFileSize>10MB</maxFileSize>
+            <!-- 日志文件最大数量 -->
+            <maxHistory>365</maxHistory>
+            <!--  日志文件总大小 -->
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+
+    <!-- level:用来设置打印级别 TRACE<DEBUG<INFO<WARN<ALL<OFF -->
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="infoFileAppender"/>
+        <appender-ref ref="errorFileAppender"/>
+    </root>
+
+    <!-- logger:用来设置某一个包获取某一个类的日志打印级别 -->
+    <logger name="org.springframework.web" level="DEBUG"/>
+
+
+</configuration>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+          "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 引入配置文件 -->
+    <properties resource="application.properties"/>
+    <!--classPathEntry:数据库的JDBC驱动，换成你自己的驱动位置，可选 -->
+    <!-- <classPathEntry location="D:\generator_myatis\mysql-connector-java-5.1.24-bin.jar" -->
+    <!-- 一个数据库一个context -->
+    <!-- defaultModelType="flat" 大数据字段，不分表 -->
+    <context id="MysqlTables" targetRuntime="MyBatis3" defaultModelType="flat">
+        <!--<property name="autoDelimitkeywords" value="true"/>-->
+        <!--<property name="beginningDelimiter" value=""/>-->
+        <!--<property name="endingDeimiter" value=""/>-->
+        <!--<property name="javaFileEncoding" value="utf-8"/>-->
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>-->
+
+        <!-- 注释 -->
+        <commentGenerator>
+            <!-- 是否取消注释 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 是否生成注释时间戳 -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- jdbc连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.1.104:3306/weix?useSSL=false"
+                        userId="root"
+                        password="root">
+            <!-- 针对orace数据库 -->
+            <!--<property name="remarksReporting" value="true"/>-->
+        </jdbcConnection>
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal,false可自动转化以下类型(Long,Integer,Short,etc.) -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成实体类地址 -->
+        <javaModelGenerator targetPackage="com.weix.service.domain" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <!-- <property name="trimStrings" value="true"/>-->
+        </javaModelGenerator>
+        
+        <sqlMapGenerator targetPackage="com.weix.service.mapper" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 生成mapxml对应Client，额就是接口dao -->
+        <javaClientGenerator type="com.weix.service.repository" targetPackage="src/java/main"
+                             targetProject="XMLMAPPER">
+            <property name="enableSubPackates" value="false"/>
+        </javaClientGenerator>
+
+        <table tableName="TB_SYS_USER" domainObjectName="SysUser" mapperName="SysUserRepository" enableInsert="true" enableUpdateByPrimaryKey="false" enableSelectByPrimaryKey="false" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+    </context>
+
+</generatorConfiguration>
+

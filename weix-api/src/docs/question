@@ -1,0 +1,18 @@
+数据库相关
+    1、异常:Driver:com.mysql.jdbc.Driver@2b7374f8 returned null for URL
+    配置:spring.datasource.url=jdbc.mysql://192.168.1.104:3306/weix
+    处理:spring.datasource.url=jdbc.mysql://192.168.1.104:3306/weix中的jdbc.mysql修改为jdbc:mysql
+
+    2、springBoot启动时候报出警告:Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+,
+      处理:spring.datasource.url=jdbc.mysql://192.168.1.104:3306/weix加上配置为"useSSL=false"
+
+
+spring相关
+   异常:No qualifying bean of type
+   处理:没有对应的实现类，补上相关的实现类
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache name="wstmmedical">
+    <diskStore path="java.io.tmpdir"/>
+    <!-- 缓存测试 -->
+    <cache name="cacheTest"
+           maxEntriesLocalHeap="200000"
+           eternal="false"
+           timeToLiveSeconds="3">
+    </cache>
+</ehcache>
